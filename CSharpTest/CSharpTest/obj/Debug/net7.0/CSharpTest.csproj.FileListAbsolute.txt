@@ -1,0 +1,15 @@
+/Users/jessicalipinski/Source/Repos/CSharpTest/CSharpTest/CSharpTest/bin/Debug/net7.0/CSharpTest
+/Users/jessicalipinski/Source/Repos/CSharpTest/CSharpTest/CSharpTest/bin/Debug/net7.0/CSharpTest.deps.json
+/Users/jessicalipinski/Source/Repos/CSharpTest/CSharpTest/CSharpTest/bin/Debug/net7.0/CSharpTest.runtimeconfig.json
+/Users/jessicalipinski/Source/Repos/CSharpTest/CSharpTest/CSharpTest/bin/Debug/net7.0/CSharpTest.dll
+/Users/jessicalipinski/Source/Repos/CSharpTest/CSharpTest/CSharpTest/bin/Debug/net7.0/CSharpTest.pdb
+/Users/jessicalipinski/Source/Repos/CSharpTest/CSharpTest/CSharpTest/obj/Debug/net7.0/CSharpTest.csproj.AssemblyReference.cache
+/Users/jessicalipinski/Source/Repos/CSharpTest/CSharpTest/CSharpTest/obj/Debug/net7.0/CSharpTest.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jessicalipinski/Source/Repos/CSharpTest/CSharpTest/CSharpTest/obj/Debug/net7.0/CSharpTest.AssemblyInfoInputs.cache
+/Users/jessicalipinski/Source/Repos/CSharpTest/CSharpTest/CSharpTest/obj/Debug/net7.0/CSharpTest.AssemblyInfo.cs
+/Users/jessicalipinski/Source/Repos/CSharpTest/CSharpTest/CSharpTest/obj/Debug/net7.0/CSharpTest.csproj.CoreCompileInputs.cache
+/Users/jessicalipinski/Source/Repos/CSharpTest/CSharpTest/CSharpTest/obj/Debug/net7.0/CSharpTest.dll
+/Users/jessicalipinski/Source/Repos/CSharpTest/CSharpTest/CSharpTest/obj/Debug/net7.0/refint/CSharpTest.dll
+/Users/jessicalipinski/Source/Repos/CSharpTest/CSharpTest/CSharpTest/obj/Debug/net7.0/CSharpTest.pdb
+/Users/jessicalipinski/Source/Repos/CSharpTest/CSharpTest/CSharpTest/obj/Debug/net7.0/CSharpTest.genruntimeconfig.cache
+/Users/jessicalipinski/Source/Repos/CSharpTest/CSharpTest/CSharpTest/obj/Debug/net7.0/ref/CSharpTest.dll
