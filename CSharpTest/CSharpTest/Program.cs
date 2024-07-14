@@ -5,47 +5,62 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
+
+/// <summary>
+/// Notes: I started this project with Flowers because I thought it was pretty
+/// repetative. With further inspection, I noticed small differences between all
+/// the verses and choruses, hence the verse1,chorus1,ect. I kept at it, but wanted
+/// a chance to show a simpler implimentation, and that is why I also included
+/// Funky Town. That song is very repetative. My thought process with the if statemetns
+/// is to mimic the structure of the song by grouping verse/chorus iterations.
+///
+/// As for repatition within verses, my general rule was if there was more than
+/// 3 iterations of the same line, I would create a repatition loop. I thought
+/// smaller iterations would sacrifice readability. I also chose to encapsulate all
+/// my print functions for as simple of a main method as possible.
+/// I used print statements again for readability.
+/// </summary>
 class CSharpTest
 { 
 
     static void Main(string[] args)
     {
         playFlowers();
+        playFunkyTown();
     }
+
+
+    /////////////////////////////////
+    /// Flowers
+    /////////////////////////////////
+
 
     static void playFlowers()
     {
         // keep track of which verses we have played
         bool playedFirstVerse = false;
         bool playedSecondVerse = false;
-        // there are 3 iterations of the chorus in this song
-        int chorusIterations = 3;
+        // there are 2 iterations of ther verse/chorus structure
+        int verseIterations = 2;
 
         // structure of the song: (verse1 chorus1) (verse2 chorus2) (chorus3)
-        for (int i = 0; i < chorusIterations; i++)
+        for (int i = 0; i < verseIterations; i++)
         {
             if (!playedFirstVerse)
             {
                 PrintVerseOne();
                 playedFirstVerse = true;
-                // since this is a special version of the chorus,
-                // print it and then "continue" to the next iteration of the loop
-                // so we do not print the default chorus below (PrintChorus2)
                 PrintChorusOne();
-                continue;
             }
-            else if(!playedSecondVerse)
+            else if (!playedSecondVerse)
             {
                 PrintSecondVerse();
                 playedSecondVerse = true;
                 PrintChorusTwo();
+                PrintChorusThree();
             }
-            // the chorus print statement is here so it is printed every
-            // iteration
-            PrintChorusThree();
         }
     }
-
 
     static void PrintChorusOne()
     {
@@ -94,5 +109,67 @@ class CSharpTest
         Console.Write("Paint my nails cherry red\n" +
             "Match the roses that you left\nNo remorse, no regret\n" +
             "I forgive every word you said\n\nOoh, ");
+    }
+
+    /////////////////////////////////
+    /// Funky Town
+    /////////////////////////////////
+
+    static void playFunkyTown()
+    {
+        // the verse/chorus structure of this song is repeated twice
+        int songIterations = 2;
+        // structure of the song: (verse preChorus chorus) (verse prechorus chorus) outro
+        for (int i = 0; i < songIterations; i++)
+        {
+            PrintVerse();
+            PrintPreChorus();
+            PrintChorus();
+        }
+        PrintOutro();
+    }
+
+    static void PrintVerse()
+    {
+        Console.WriteLine("Gotta make a move to a town that's right for me\n" +
+            "Town to keep me movin', keep me groovin' with some energy\n");
+    }
+
+    static void PrintPreChorus()
+    {
+        Console.WriteLine("Well, I talk about it, talk about it\n" +
+            "Talk about it, talk about it\nTalk about, talk about\n" +
+            "Talk about movin'\nGotta move on\nGotta move on\nGotta move on\n");
+    }
+
+    static void PrintChorus()
+    {
+        int funkyTownIteration = 7;
+        Console.WriteLine("A-won't you take me to Funkytown?");
+        for (int i = 0; i < funkyTownIteration; i++)
+        {
+            Console.WriteLine("Won't you take me to Funkytown?");
+        }
+        // add a new line for separation
+        Console.WriteLine("\n");
+    }
+
+    static void PrintOutro()
+    {
+        int funkyTownIteration = 8;
+        for (int i = 0; i < funkyTownIteration; i++)
+        {
+            Console.WriteLine("Won't you take me down to Funkytown?");
+        }
+        Console.WriteLine("Take me, won't you take me?\n" +
+            "Take me, won't you take me?" + "Take me, (won't you take me)"+
+            " won't you take me?\nTake me, (won't you take me) won't you take me?");
+        int wantToGoIteration = 4;
+        for (int i = 0; i < wantToGoIteration; i++)
+        {
+            Console.WriteLine("I wanna go (won't you take me) to Funkytown");
+        }
+        // add a new line for separation
+        Console.WriteLine("\n");
     }
 }
