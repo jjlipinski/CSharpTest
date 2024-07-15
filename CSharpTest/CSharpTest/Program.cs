@@ -34,9 +34,6 @@ class CSharpTest
 
         Console.WriteLine("*****IMPLEMENTATION 2*****");
         playFunkyTown();
-
-        Console.WriteLine("*****IMPLEMENTATION 3*****");
-        shortPlayFlowers();
     }
 
 
@@ -69,18 +66,6 @@ class CSharpTest
                 PrintChorusTwo();
                 PrintChorusThree();
             }
-        }
-    }
-
-    static void shortPlayFlowers()
-    {
-        // stores a collection of song lines
-        IEnumerable<string> fileContents = File.ReadLines("../../../../Flowers.txt");
-
-        // print out each line
-        foreach (string line in fileContents)
-        {
-            Console.WriteLine(line);
         }
     }
 
