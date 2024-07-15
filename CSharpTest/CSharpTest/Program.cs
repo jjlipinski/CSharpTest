@@ -9,27 +9,33 @@ using System.Xml.Linq;
 /// <summary>
 /// Notes: I started this project with 'Flowers' because I thought it was pretty
 /// repetative. With further inspection, I noticed small differences between all
-/// the verses and choruses, hence the verse1,chorus1...ect. I kept at it, but wanted
-/// a chance to show a simpler implimentation, and that is why I also included
-/// Funky Town. That song is very repetative. My thought process with the if statements
-/// is to mimic the structure of the song by grouping each verse/chorus pair as
-/// a repeated iteration.
+/// the verses and choruses, hence the verse1,chorus1...ect. I kept at it because
+/// I wanted to finish, but I also wanted a chance to show a simpler
+/// implimentation, and that is why I also included 'Funky Town'.
+/// That song is very repetative. My thought process
+/// is the if-statements will mimic the structure of the song by grouping
+/// each verse/chorus pair and labeling them as an 'iteration'.
 ///
-/// As for repatition within verses, my general rule was if there was more than
-/// 3 iterations of the same line, I would create a repatition loop. I thought
+/// As for repatition within verses/choruses, my general rule is if there is more than
+/// 3 iterations of the same line, I will use a loop. I thought
 /// smaller iterations would sacrifice readability. I also chose to encapsulate all
 /// my print functions to try to make the main function as simple as possible.
 ///
-/// I realized after doing the other two functions, that I could just havea  text file
-/// and read in the lines, it's short, but not very readable. 
+/// I realized after using all those print statements, that I could just have a text file
+/// and read out each song line. It's short, but not very readable. 
 /// </summary>
 class CSharpTest
 { 
 
     static void Main(string[] args)
     {
-        //playFlowers();
-        //playFunkyTown();
+        Console.WriteLine("*****IMPLEMENTATION 1*****");
+        playFlowers();
+
+        Console.WriteLine("*****IMPLEMENTATION 2*****");
+        playFunkyTown();
+
+        Console.WriteLine("*****IMPLEMENTATION 3*****");
         shortPlayFlowers();
     }
 
@@ -68,8 +74,10 @@ class CSharpTest
 
     static void shortPlayFlowers()
     {
-        IEnumerable<string> fileContents = File.ReadLines("Flowers.txt");
+        // stores a collection of song lines
+        IEnumerable<string> fileContents = File.ReadLines("../../../../Flowers.txt");
 
+        // print out each line
         foreach (string line in fileContents)
         {
             Console.WriteLine(line);
@@ -96,20 +104,20 @@ class CSharpTest
             "\n\nCan love me better\nI can love me better, baby\n" +
             "Can love me better\nI can love me better, baby\n" +
             "Can love me better\nI can love me better, baby\nCan love me better\n"+
-            "Oh, I");
+            "Oh, I\n");
     }
     static void PrintChorusThree()
     {
         Console.WriteLine("I didn't wanna leave you\nI didn't wanna fight\n" +
-            "Started to cry, but then remembered I\nI can buy myself flowers (oh)" +
+            "Started to cry, but then remembered I\n\nI can buy myself flowers (oh)" +
             "\nWrite my name in the sand (mm)\nTalk to myself for hours (yeah)" +
             "\nSay things you don't understand (you never will)\n" +
             "I can take myself dancing, yeah\nI can hold my own hand\n" +
             "Yeah, I can love me better than\nYeah, I can love me better than you can" +
-            "\nCan love me better\nI can love me better, baby (oh)\n" +
+            "\n\nCan love me better\nI can love me better, baby (oh)\n" +
             "Can love me better\nI can love me better (than you can), baby\n" +
             "Can love me better\nI can love me better, baby\nCan love me better" +
-            "\nI");
+            "\nI\n");
     }
     static void PrintVerseOne()
     {
@@ -133,6 +141,7 @@ class CSharpTest
     {
         // the verse/chorus structure of this song is repeated twice
         int songIterations = 2;
+
         // structure of the song: (verse preChorus chorus) (verse prechorus chorus) outro
         for (int i = 0; i < songIterations; i++)
         {
