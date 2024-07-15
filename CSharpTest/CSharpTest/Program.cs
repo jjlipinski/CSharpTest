@@ -7,26 +7,30 @@ using System.Xml.Linq;
 
 
 /// <summary>
-/// Notes: I started this project with Flowers because I thought it was pretty
+/// Notes: I started this project with 'Flowers' because I thought it was pretty
 /// repetative. With further inspection, I noticed small differences between all
-/// the verses and choruses, hence the verse1,chorus1,ect. I kept at it, but wanted
+/// the verses and choruses, hence the verse1,chorus1...ect. I kept at it, but wanted
 /// a chance to show a simpler implimentation, and that is why I also included
-/// Funky Town. That song is very repetative. My thought process with the if statemetns
-/// is to mimic the structure of the song by grouping verse/chorus iterations.
+/// Funky Town. That song is very repetative. My thought process with the if statements
+/// is to mimic the structure of the song by grouping each verse/chorus pair as
+/// a repeated iteration.
 ///
 /// As for repatition within verses, my general rule was if there was more than
 /// 3 iterations of the same line, I would create a repatition loop. I thought
 /// smaller iterations would sacrifice readability. I also chose to encapsulate all
-/// my print functions for as simple of a main method as possible.
-/// I used print statements again for readability.
+/// my print functions to try to make the main function as simple as possible.
+///
+/// I realized after doing the other two functions, that I could just havea  text file
+/// and read in the lines, it's short, but not very readable. 
 /// </summary>
 class CSharpTest
 { 
 
     static void Main(string[] args)
     {
-        playFlowers();
-        playFunkyTown();
+        //playFlowers();
+        //playFunkyTown();
+        shortPlayFlowers();
     }
 
 
@@ -40,7 +44,7 @@ class CSharpTest
         // keep track of which verses we have played
         bool playedFirstVerse = false;
         bool playedSecondVerse = false;
-        // there are 2 iterations of ther verse/chorus structure
+        // there are 2 iterations of the verse/chorus structure
         int verseIterations = 2;
 
         // structure of the song: (verse1 chorus1) (verse2 chorus2) (chorus3)
@@ -59,6 +63,16 @@ class CSharpTest
                 PrintChorusTwo();
                 PrintChorusThree();
             }
+        }
+    }
+
+    static void shortPlayFlowers()
+    {
+        IEnumerable<string> fileContents = File.ReadLines("Flowers.txt");
+
+        foreach (string line in fileContents)
+        {
+            Console.WriteLine(line);
         }
     }
 
@@ -144,31 +158,42 @@ class CSharpTest
 
     static void PrintChorus()
     {
+        // "Won't you take me to Funkytown?" repeats 7 times
         int funkyTownIteration = 7;
+
         Console.WriteLine("A-won't you take me to Funkytown?");
+
         for (int i = 0; i < funkyTownIteration; i++)
         {
             Console.WriteLine("Won't you take me to Funkytown?");
         }
+
         // add a new line for separation
         Console.WriteLine("\n");
     }
 
     static void PrintOutro()
     {
+        //"Won't you take me down to Funkytown?" repeats 8 times
         int funkyTownIteration = 8;
+
         for (int i = 0; i < funkyTownIteration; i++)
         {
             Console.WriteLine("Won't you take me down to Funkytown?");
         }
+
         Console.WriteLine("Take me, won't you take me?\n" +
             "Take me, won't you take me?" + "Take me, (won't you take me)"+
             " won't you take me?\nTake me, (won't you take me) won't you take me?");
+
+        // "I wanna go (won't you take me) to Funkytown" repeats 4 times
         int wantToGoIteration = 4;
+
         for (int i = 0; i < wantToGoIteration; i++)
         {
             Console.WriteLine("I wanna go (won't you take me) to Funkytown");
         }
+
         // add a new line for separation
         Console.WriteLine("\n");
     }
