@@ -21,8 +21,6 @@ using System.Xml.Linq;
 /// smaller iterations would sacrifice readability. I also chose to encapsulate all
 /// my print functions to try to make the main function as simple as possible.
 ///
-/// I realized after using all those print statements, that I could just have a text file
-/// and read out each song line. It's short, but not very readable. 
 /// </summary>
 class CSharpTest
 { 
