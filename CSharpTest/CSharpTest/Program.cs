@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Reflection;
-using static System.Console;
-
 
 void PrintPreChorus(string prefix)
 {
@@ -26,22 +24,21 @@ void PrintChorus(int chorusIteration)
 
     Console.Write
     (
-        """
-        Been here all along, so why can't you see?
-        You belong with me
-        """
+        "Been here all along, so why can't you see?\nYou belong with me"
     );
 
     Console.Write((chorusIteration != 1 ?
         """"
 
         Standing by and waiting at your back door
-        All this time, how could you not know, baby ?
-        You belong with me, you belong with me
+        All this time, how could you not know, baby?
+        You belong with me
 
-        """" : ""));
+        """" :
+        """
+        , you belong with me
 
-    Console.Write(", you belong with me\n");
+        """));
 }
 
 void printBridge()
@@ -49,6 +46,7 @@ void printBridge()
     Console.WriteLine
     (
         """
+
         Oh, I remember you driving to my house
         In the middle of the night
         I'm the one who makes you laugh
