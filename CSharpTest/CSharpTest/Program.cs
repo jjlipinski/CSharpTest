@@ -1,192 +1,124 @@
-﻿using Microsoft.VisualBasic;
-using System.ComponentModel;
-using System.Diagnostics.Metrics;
-using System.IO;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+﻿using System;
+using System.Linq.Expressions;
+using System.Reflection;
+using static System.Console;
 
 
-/// <summary>
-/// Notes: I started this project with 'Flowers' because I thought it was pretty
-/// repetative. With further inspection, I noticed small differences between all
-/// the verses and choruses, hence the verse1,chorus1...ect. I kept at it because
-/// I wanted to finish, but I also wanted a chance to show a simpler
-/// implimentation, and that is why I also included 'Funky Town'.
-/// That song is very repetative. My thought process
-/// is the if-statements will mimic the structure of the song by grouping
-/// each verse/chorus pair and labeling them as an 'iteration'.
-///
-/// As for repatition within verses/choruses, my general rule is if there is more than
-/// 3 iterations of the same line, I will use a loop. I thought
-/// smaller iterations would sacrifice readability. I also chose to encapsulate all
-/// my print functions to try to make the main function as simple as possible.
-///
-/// </summary>
-class CSharpTest
-{ 
+void PrintPreChorus(string prefix)
+{
+    Console.WriteLine
+    (
+        $"""
+        {prefix}
+        Dreaming 'bout the day when you wake up and find
+        That what you're looking for has been here the whole time
 
-    static void Main(string[] args)
-    {
-        Console.WriteLine("*****IMPLEMENTATION 1*****");
-        playFlowers();
-
-        Console.WriteLine("*****IMPLEMENTATION 2*****");
-        playFunkyTown();
-    }
-
-
-    /////////////////////////////////
-    /// Flowers
-    /////////////////////////////////
-
-
-    static void playFlowers()
-    {
-        // keep track of which verses we have played
-        bool playedFirstVerse = false;
-        bool playedSecondVerse = false;
-        // there are 2 iterations of the verse/chorus structure
-        int verseIterations = 2;
-
-        // structure of the song: (verse1 chorus1) (verse2 chorus2) (chorus3)
-        for (int i = 0; i < verseIterations; i++)
-        {
-            if (!playedFirstVerse)
-            {
-                PrintVerseOne();
-                playedFirstVerse = true;
-                PrintChorusOne();
-            }
-            else if (!playedSecondVerse)
-            {
-                PrintSecondVerse();
-                playedSecondVerse = true;
-                PrintChorusTwo();
-                PrintChorusThree();
-            }
-        }
-    }
-
-    static void PrintChorusOne()
-    {
-        Console.WriteLine("I didn't wanna leave you\nI didn't wanna lie\n" +
-            "Started to cry, but then remembered I\n\nI can buy myself flowers"+
-            "\nWrite my name in the sand\nTalk to myself for hours\n" +
-            "Say things you don't understand\nI can take myself dancing\n" +
-            "And I can hold my own hand\nYeah, I can love me better than you can" +
-            "\n\nCan love me better\nI can love me better, baby\n" +
-            "Can love me better\nI can love me better, baby\n");
-    }
-    static void PrintChorusTwo()
-    {
-        Console.WriteLine("I didn't wanna leave you, baby\nI didn't wanna fight\n" +
-            "Started to cry, but then remembered I\n\nI can buy myself flowers" +
-            "\nWrite my name in the sand\nTalk to myself for hours\n" +
-            "Say things you don't understand\nI can take myself dancing, yeah\n" +
-            "I can hold my own hand\nYeah, I can love me better than you can" +
-            "\n\nCan love me better\nI can love me better, baby\n" +
-            "Can love me better\nI can love me better, baby\n" +
-            "Can love me better\nI can love me better, baby\nCan love me better\n"+
-            "Oh, I\n");
-    }
-    static void PrintChorusThree()
-    {
-        Console.WriteLine("I didn't wanna leave you\nI didn't wanna fight\n" +
-            "Started to cry, but then remembered I\n\nI can buy myself flowers (oh)" +
-            "\nWrite my name in the sand (mm)\nTalk to myself for hours (yeah)" +
-            "\nSay things you don't understand (you never will)\n" +
-            "I can take myself dancing, yeah\nI can hold my own hand\n" +
-            "Yeah, I can love me better than\nYeah, I can love me better than you can" +
-            "\n\nCan love me better\nI can love me better, baby (oh)\n" +
-            "Can love me better\nI can love me better (than you can), baby\n" +
-            "Can love me better\nI can love me better, baby\nCan love me better" +
-            "\nI\n");
-    }
-    static void PrintVerseOne()
-    {
-        Console.Write("We were good, we were gold\n" +
-            "Kinda dream that can't be sold\nWe were right 'til we weren't\n" +
-            "Built a home and watched it burn\n\nMm, ");
-
-    }
-    static void PrintSecondVerse()
-    {
-        Console.Write("Paint my nails cherry red\n" +
-            "Match the roses that you left\nNo remorse, no regret\n" +
-            "I forgive every word you said\n\nOoh, ");
-    }
-
-    /////////////////////////////////
-    /// Funky Town
-    /////////////////////////////////
-
-    static void playFunkyTown()
-    {
-        // the verse/chorus structure of this song is repeated twice
-        int songIterations = 2;
-
-        // structure of the song: (verse preChorus chorus) (verse prechorus chorus) outro
-        for (int i = 0; i < songIterations; i++)
-        {
-            PrintVerse();
-            PrintPreChorus();
-            PrintChorus();
-        }
-        PrintOutro();
-    }
-
-    static void PrintVerse()
-    {
-        Console.WriteLine("Gotta make a move to a town that's right for me\n" +
-            "Town to keep me movin', keep me groovin' with some energy\n");
-    }
-
-    static void PrintPreChorus()
-    {
-        Console.WriteLine("Well, I talk about it, talk about it\n" +
-            "Talk about it, talk about it\nTalk about, talk about\n" +
-            "Talk about movin'\nGotta move on\nGotta move on\nGotta move on\n");
-    }
-
-    static void PrintChorus()
-    {
-        // "Won't you take me to Funkytown?" repeats 7 times
-        int funkyTownIteration = 7;
-
-        Console.WriteLine("A-won't you take me to Funkytown?");
-
-        for (int i = 0; i < funkyTownIteration; i++)
-        {
-            Console.WriteLine("Won't you take me to Funkytown?");
-        }
-
-        // add a new line for separation
-        Console.WriteLine("\n");
-    }
-
-    static void PrintOutro()
-    {
-        //"Won't you take me down to Funkytown?" repeats 8 times
-        int funkyTownIteration = 8;
-
-        for (int i = 0; i < funkyTownIteration; i++)
-        {
-            Console.WriteLine("Won't you take me down to Funkytown?");
-        }
-
-        Console.WriteLine("Take me, won't you take me?\n" +
-            "Take me, won't you take me?" + "Take me, (won't you take me)"+
-            " won't you take me?\nTake me, (won't you take me) won't you take me?");
-
-        // "I wanna go (won't you take me) to Funkytown" repeats 4 times
-        int wantToGoIteration = 4;
-
-        for (int i = 0; i < wantToGoIteration; i++)
-        {
-            Console.WriteLine("I wanna go (won't you take me) to Funkytown");
-        }
-
-        // add a new line for separation
-        Console.WriteLine("\n");
-    }
+        """
+    );
 }
+
+void PrintChorus(int chorusIteration)
+{
+
+    Console.WriteLine((chorusIteration != 3 ? "If you could see that I'm the one who understands you" :
+        "Can't you see that I'm the one who understands you"));
+
+
+    Console.Write
+    (
+        """
+        Been here all along, so why can't you see?
+        You belong with me
+        """
+    );
+
+    Console.Write((chorusIteration != 1 ?
+        """"
+
+        Standing by and waiting at your back door
+        All this time, how could you not know, baby ?
+        You belong with me, you belong with me
+
+        """" : ""));
+
+    Console.Write(", you belong with me\n");
+}
+
+void printBridge()
+{
+    Console.WriteLine
+    (
+        """
+        Oh, I remember you driving to my house
+        In the middle of the night
+        I'm the one who makes you laugh
+        When you know you're 'bout to cry
+        And I know your favorite songs
+        And you tell me 'bout your dreams
+        Think I know where you belong
+        Think I know it's with me
+
+        """
+    );
+}
+
+
+void PrintVerse1()
+{
+    Console.WriteLine
+    (
+        """
+        You're on the phone with your girlfriend, she's upset
+        She's going off about something that you said
+        'Cause she doesn't get your humor like I do
+        I'm in the room, it's a typical Tuesday night
+        I'm listening to the kind of music she doesn't like
+        And she'll never know your story like I do
+
+        """
+    );
+}
+
+void PrintVerse2()
+{
+    Console.WriteLine
+    (
+        """
+
+        Walking the streets with you and your worn-out jeans
+        I can't help thinking this is how it ought to be
+        Laughing on a park bench, thinking to myself
+        Hey, isn't this easy?
+        And you've got a smile that could light up this whole town
+        I haven't seen it in a while since she brought you down
+        You say you're fine, I know you better than that
+        Hey, whatcha doing with a girl like that?
+
+        """
+    );
+}
+
+void PrintOutro()
+{
+    Console.WriteLine
+   (
+       """
+       You belong with me
+       Have you ever thought just maybe
+       You belong with me?
+       You belong with me
+
+       """
+   );
+}
+
+
+PrintVerse1();
+PrintPreChorus("But she wears short skirts, I wear T-shirts\nShe's Cheer Captain and I'm on the bleachers");
+PrintChorus(1);
+PrintVerse2();
+PrintPreChorus("She wears high heels, I wear sneakers\nShe's Cheer Captain and I'm on the bleachers");
+PrintChorus(2);
+printBridge();
+PrintChorus(3);
+PrintOutro();
