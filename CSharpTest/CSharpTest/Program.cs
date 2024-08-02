@@ -32,7 +32,7 @@ void PrintChorus(int chorusIteration)
 
         Standing by and waiting at your back door
         All this time, how could you not know, baby?
-        You belong with me
+        You belong with me, you belong with me
 
         """" :
         """
@@ -101,6 +101,7 @@ void PrintOutro()
     Console.WriteLine
    (
        """
+
        You belong with me
        Have you ever thought just maybe
        You belong with me?
